@@ -2,70 +2,51 @@
 
 class Program
 {
-    // Method to create an array of integers where each element is initialized to its 1-based index value
-    static int[] Make(int n)
+    static void Main(string[] args)
     {
-        // Initialize the array with size n
-        int[] a = new int[n];
-        // Populate the array with values from 1 to n
-        for (int i = 0; i < n; i++)
-        {
-            a[i] = i + 1; // Set the element at index i to i + 1
-        }
-        return a; // Return the populated array
-    }
+        // Initialize an array with some unsorted values
+        int[] a = { 3, 2, 5, 1, 4 };
 
-    // Method to double each value in the given integer array
-    static void Dub(int[] jub)
-    {
-        // Iterate through the array and double each element
-        for (int i = 0; i < jub.Length; i++)
-        {
-            jub[i] *= 2; // Double the value at index i
-        }
-    }
-
-    // Method to compute the sum of all elements in the given integer array
-    static int Mus(int[] zoo)
-    {
-        int fus = 0; // Variable to store the sum
-        // Iterate through the array and accumulate the sum
-        foreach (int z in zoo)
-        {
-            fus += z; // Add each element to the sum
-        }
-        return fus; // Return the computed sum
-    }
-
-    // Main method to test the other methods
-    static void Main()
-    {
-        // Create an array with values from 1 to 5 using the Make method
-        int[] bob = Make(5);
+        // Variable to temporarily hold values during swapping
+        int tmp;
 
         // Print the original array
-        Console.WriteLine("Original array:");
-        foreach (int value in bob)
+        Console.WriteLine("The original array: ");
+        for (int i = 0; i < a.Length; i++)
         {
-            Console.Write(value + " "); // Print each value followed by a space
+            Console.Write(a[i] + " "); // Print each element followed by a space
         }
         Console.WriteLine(); // Print a newline for better readability
 
-        // Double the values in the array using the Dub method
-        Dub(bob);
-
-        // Print the modified array
-        Console.WriteLine("Modified array:");
-        foreach (int value in bob)
+        // Nested for loops to sort the array using Bubble Sort algorithm
+        for (int i = 0; i < a.Length - 1; i++)
         {
-            Console.Write(value + " "); // Print each doubled value followed by a space
+            // Inner loop performs comparisons and swaps for the current pass
+            for (int j = 0; j < a.Length - 1 - i; j++)
+            {
+                // Compare adjacent elements
+                if (a[j] > a[j + 1])
+                {
+                    // Swap if the current element is greater than the next element
+                    tmp = a[j + 1]; // Temporarily hold the value of the next element
+                    a[j + 1] = a[j]; // Move the current element to the next position
+                    a[j] = tmp; // Place the previously next element into the current position
+                }
+            }
+        }
+
+        // Print the modified (sorted) array
+        Console.WriteLine("\nThe modified array:");
+        foreach (int i in a)
+        {
+            Console.Write(i + " "); // Print each element followed by a space
         }
         Console.WriteLine(); // Print a newline for better readability
 
-        // Calculate and print the sum of the array elements using the Mus method
-        Console.WriteLine("Sum of array elements:");
-        Console.WriteLine(Mus(bob)); // Print the sum of the array elements
+        // Wait for user input before closing the console window
+        Console.ReadLine();
     }
 }
+
 
 
