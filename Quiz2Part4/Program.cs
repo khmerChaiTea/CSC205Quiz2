@@ -1,52 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.ConstrainedExecution;
+using System.Text;
+using System.Threading.Tasks;
 
-class Program
+namespace Quiz2Part4
 {
-    static void Main(string[] args)
+    internal class Program
     {
-        // Initialize an array with some unsorted values
-        int[] a = { 3, 2, 5, 1, 4 };
-
-        // Variable to temporarily hold values during swapping
-        int tmp;
-
-        // Print the original array
-        Console.WriteLine("The original array: ");
-        for (int i = 0; i < a.Length; i++)
+        static void Main(string[] args)
         {
-            Console.Write(a[i] + " "); // Print each element followed by a space
-        }
-        Console.WriteLine(); // Print a newline for better readability
+            // Create two different Car objects using the parameterized constructor
+            Car car1 = new Car("1HGBH41JXMN109186", "Toyota", "Camry", 25000);
+            Car car2 = new Car("2HGBH41JXMN109187", "Honda", "Civic", 15000);
 
-        // Nested for loops to sort the array using Bubble Sort algorithm
-        for (int i = 0; i < a.Length - 1; i++)
-        {
-            // Inner loop performs comparisons and swaps for the current pass
-            for (int j = 0; j < a.Length - 1 - i; j++)
-            {
-                // Compare adjacent elements
-                if (a[j] > a[j + 1])
-                {
-                    // Swap if the current element is greater than the next element
-                    tmp = a[j + 1]; // Temporarily hold the value of the next element
-                    a[j + 1] = a[j]; // Move the current element to the next position
-                    a[j] = tmp; // Place the previously next element into the current position
-                }
-            }
-        }
+            // Call the Drive method for each car to increase mileage
+            car1.Drive(150); // Increase car1's mileage by 150 miles
+            car2.Drive(300); // Increase car2's mileage by 300 miles
 
-        // Print the modified (sorted) array
-        Console.WriteLine("\nThe modified array:");
-        foreach (int i in a)
-        {
-            Console.Write(i + " "); // Print each element followed by a space
-        }
-        Console.WriteLine(); // Print a newline for better readability
+            // Call the Display method for each car to print their details
+            Console.WriteLine("Details of Car 1:");
+            car1.Display();  // Display the details of car1
 
-        // Wait for user input before closing the console window
-        Console.ReadLine();
+            Console.WriteLine("\nDetails of Car 2:");
+            car2.Display();  // Display the details of car2
+
+        }
     }
 }
-
-
-
